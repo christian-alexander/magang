@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2021 at 03:01 PM
+-- Generation Time: Jan 06, 2021 at 05:43 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -57,23 +57,24 @@ CREATE TABLE `dosen_pembimbing` (
   `email` char(50) NOT NULL,
   `nama` char(100) NOT NULL,
   `nidn` char(10) NOT NULL,
-  `nowa` char(15) NOT NULL
+  `nowa` char(15) NOT NULL,
+  `instansi` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `dosen_pembimbing`
 --
 
-INSERT INTO `dosen_pembimbing` (`id`, `email`, `nama`, `nidn`, `nowa`) VALUES
-(1, 'dosen1@email.com', 'Dosen1', '1014070101', '08123456789');
+INSERT INTO `dosen_pembimbing` (`id`, `email`, `nama`, `nidn`, `nowa`, `instansi`) VALUES
+(1, 'dosen1@email.com', 'Dosen1', '1014070101', '08123456789', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instansi_magang`
+-- Table structure for table `instansi`
 --
 
-CREATE TABLE `instansi_magang` (
+CREATE TABLE `instansi` (
   `id` int(11) NOT NULL,
   `id_usaha` char(10) NOT NULL,
   `nama` char(100) NOT NULL,
@@ -83,11 +84,12 @@ CREATE TABLE `instansi_magang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `instansi_magang`
+-- Dumping data for table `instansi`
 --
 
-INSERT INTO `instansi_magang` (`id`, `id_usaha`, `nama`, `notelp`, `nofax`, `alamat`) VALUES
-(1, 'im20210001', 'PT. Jaya', '03123456789', '03123456789', 'jalan buah');
+INSERT INTO `instansi` (`id`, `id_usaha`, `nama`, `notelp`, `nofax`, `alamat`) VALUES
+(1, 'im20210001', 'PT. Jaya', '03123456789', '03123456789', 'jalan buah'),
+(2, 'im20210002', 'Universitas Widya Kartika', '03123456', '03123456', 'Sutorejo Prima Utara II / 1');
 
 -- --------------------------------------------------------
 
@@ -100,7 +102,7 @@ CREATE TABLE `pembimbing_lapangan` (
   `email` char(50) NOT NULL,
   `nama` char(100) NOT NULL,
   `nowa` char(15) DEFAULT NULL,
-  `instansimagang` char(10) NOT NULL,
+  `instansi` char(10) NOT NULL,
   `nip` char(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -108,7 +110,7 @@ CREATE TABLE `pembimbing_lapangan` (
 -- Dumping data for table `pembimbing_lapangan`
 --
 
-INSERT INTO `pembimbing_lapangan` (`id`, `email`, `nama`, `nowa`, `instansimagang`, `nip`) VALUES
+INSERT INTO `pembimbing_lapangan` (`id`, `email`, `nama`, `nowa`, `instansi`, `nip`) VALUES
 (1, 'pemlap1@email.com', 'Pemlap1', '08123456789', 'im20210001', '');
 
 -- --------------------------------------------------------
@@ -191,14 +193,14 @@ CREATE TABLE `user` (
   `nowa` char(15) DEFAULT NULL,
   `dosenpembimbing` char(50) NOT NULL,
   `pembimbinglapangan` char(50) NOT NULL,
-  `instansimagang` char(10) NOT NULL
+  `instansi` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `nama`, `nrp`, `nowa`, `dosenpembimbing`, `pembimbinglapangan`, `instansimagang`) VALUES
+INSERT INTO `user` (`id`, `email`, `nama`, `nrp`, `nowa`, `dosenpembimbing`, `pembimbinglapangan`, `instansi`) VALUES
 (1, 'satdua86@gmail.com', 'Christian Alexander', '31119003', '082233574795', '1014070101', 'pemlap1', 'im20210001');
 
 --
@@ -218,9 +220,9 @@ ALTER TABLE `dosen_pembimbing`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indexes for table `instansi_magang`
+-- Indexes for table `instansi`
 --
-ALTER TABLE `instansi_magang`
+ALTER TABLE `instansi`
   ADD PRIMARY KEY (`id_usaha`);
 
 --
