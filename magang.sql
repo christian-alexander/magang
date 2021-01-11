@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2021 at 03:58 AM
+-- Generation Time: Jan 11, 2021 at 02:09 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `akun` (
   `id_utama` int(11) NOT NULL,
   `entitas` int(1) NOT NULL,
-  `password` char(20) DEFAULT NULL,
+  `password` char(200) DEFAULT NULL,
   `email` char(50) DEFAULT NULL,
   `status` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -182,7 +182,7 @@ INSERT INTO `total_entitas` (`entitas`, `jumlah`) VALUES
 (3, 1),
 (4, 1),
 (5, 2),
-(9, 5);
+(9, 3);
 
 --
 -- Indexes for dumped tables
