@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2021 at 03:55 AM
+-- Generation Time: Jan 13, 2021 at 05:41 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -85,16 +85,19 @@ CREATE TABLE `instansi` (
   `nama` char(100) NOT NULL,
   `notelp` char(15) NOT NULL,
   `nofax` char(15) NOT NULL,
-  `alamat` char(100) NOT NULL
+  `email` char(100) NOT NULL,
+  `alamat` char(100) NOT NULL,
+  `status` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `instansi`
 --
 
-INSERT INTO `instansi` (`id_instansi`, `nama`, `notelp`, `nofax`, `alamat`) VALUES
-('1', 'PT. Jaya', '03123456789', '03123456789', 'jalan buah'),
-('2', 'Universitas Widya Kartika', '03123456', '03123456', 'Sutorejo Prima Utara II / 1');
+INSERT INTO `instansi` (`id_instansi`, `nama`, `notelp`, `nofax`, `email`, `alamat`, `status`) VALUES
+('1', 'PT. Jaya', '03123456789', '03123456789', 'jaya@jaya.com', 'jalan buah', 'on'),
+('2', 'Universitas Widya Kartika', '03123456', '03123456', 'email@widyakartika.ac.id', 'Sutorejo Prima Utara II / 1', 'on'),
+('3', 'UD. Bangkit', '198198', '', 'bangkit@bangkit.com', 'jalan salak', 'on');
 
 -- --------------------------------------------------------
 
