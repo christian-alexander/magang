@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2021 at 05:41 PM
--- Server version: 10.4.16-MariaDB
--- PHP Version: 7.4.12
+-- Waktu pembuatan: 14 Jan 2021 pada 12.03
+-- Versi server: 10.4.17-MariaDB
+-- Versi PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `akun`
+-- Struktur dari tabel `akun`
 --
 
 CREATE TABLE `akun` (
@@ -37,7 +37,7 @@ CREATE TABLE `akun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `akun`
+-- Dumping data untuk tabel `akun`
 --
 
 INSERT INTO `akun` (`id_utama`, `nama`, `entitas`, `password`, `email`, `status`) VALUES
@@ -54,7 +54,7 @@ INSERT INTO `akun` (`id_utama`, `nama`, `entitas`, `password`, `email`, `status`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dosen_pembimbing`
+-- Struktur dari tabel `dosen_pembimbing`
 --
 
 CREATE TABLE `dosen_pembimbing` (
@@ -68,7 +68,7 @@ CREATE TABLE `dosen_pembimbing` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `dosen_pembimbing`
+-- Dumping data untuk tabel `dosen_pembimbing`
 --
 
 INSERT INTO `dosen_pembimbing` (`id`, `id_utama`, `email`, `nama`, `nidn`, `nowa`, `instansi`) VALUES
@@ -77,7 +77,7 @@ INSERT INTO `dosen_pembimbing` (`id`, `id_utama`, `email`, `nama`, `nidn`, `nowa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instansi`
+-- Struktur dari tabel `instansi`
 --
 
 CREATE TABLE `instansi` (
@@ -91,7 +91,7 @@ CREATE TABLE `instansi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `instansi`
+-- Dumping data untuk tabel `instansi`
 --
 
 INSERT INTO `instansi` (`id_instansi`, `nama`, `notelp`, `nofax`, `email`, `alamat`, `status`) VALUES
@@ -102,7 +102,7 @@ INSERT INTO `instansi` (`id_instansi`, `nama`, `notelp`, `nofax`, `email`, `alam
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mahasiswa`
+-- Struktur dari tabel `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -118,7 +118,7 @@ CREATE TABLE `mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `mahasiswa`
+-- Dumping data untuk tabel `mahasiswa`
 --
 
 INSERT INTO `mahasiswa` (`id`, `id_utama`, `email`, `nama`, `nrp`, `nowa`, `dosenpembimbing`, `pembimbinglapangan`, `instansi`) VALUES
@@ -131,7 +131,7 @@ INSERT INTO `mahasiswa` (`id`, `id_utama`, `email`, `nama`, `nrp`, `nowa`, `dose
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembimbing_lapangan`
+-- Struktur dari tabel `pembimbing_lapangan`
 --
 
 CREATE TABLE `pembimbing_lapangan` (
@@ -145,7 +145,7 @@ CREATE TABLE `pembimbing_lapangan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pembimbing_lapangan`
+-- Dumping data untuk tabel `pembimbing_lapangan`
 --
 
 INSERT INTO `pembimbing_lapangan` (`id`, `id_utama`, `email`, `nama`, `nowa`, `instansi`, `nip`) VALUES
@@ -154,7 +154,7 @@ INSERT INTO `pembimbing_lapangan` (`id`, `id_utama`, `email`, `nama`, `nowa`, `i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `super_user`
+-- Struktur dari tabel `super_user`
 --
 
 CREATE TABLE `super_user` (
@@ -165,52 +165,85 @@ CREATE TABLE `super_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `super_user`
+-- Dumping data untuk tabel `super_user`
 --
 
 INSERT INTO `super_user` (`id`, `id_utama`, `nama`, `email`) VALUES
 (1, 1, 'Koordinator Magang', 'su1'),
 (2, 2, 'Administrasi UWIKA', 'su2');
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `waiting_list`
+--
+
+CREATE TABLE `waiting_list` (
+  `id` int(11) NOT NULL,
+  `nama` char(100) NOT NULL,
+  `nrp` char(100) NOT NULL,
+  `email` char(100) NOT NULL,
+  `password` char(100) NOT NULL,
+  `nowa` char(100) NOT NULL,
+  `instansi` char(100) NOT NULL,
+  `entitas` char(100) NOT NULL,
+  `dosenpembimbing` char(100) NOT NULL,
+  `pembimbinglapangan` char(100) NOT NULL,
+  `status` char(3) NOT NULL DEFAULT 'on'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `waiting_list`
+--
+
+INSERT INTO `waiting_list` (`id`, `nama`, `nrp`, `email`, `password`, `nowa`, `instansi`, `entitas`, `dosenpembimbing`, `pembimbinglapangan`, `status`) VALUES
+(1, 'ininama', '', 'iniemail@email.com', '12345678', '12345678', '1', '3', '', '', 'on');
+
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `akun`
+-- Indeks untuk tabel `akun`
 --
 ALTER TABLE `akun`
   ADD PRIMARY KEY (`id_utama`);
 
 --
--- Indexes for table `dosen_pembimbing`
+-- Indeks untuk tabel `dosen_pembimbing`
 --
 ALTER TABLE `dosen_pembimbing`
   ADD PRIMARY KEY (`id_utama`);
 
 --
--- Indexes for table `instansi`
+-- Indeks untuk tabel `instansi`
 --
 ALTER TABLE `instansi`
   ADD PRIMARY KEY (`id_instansi`);
 
 --
--- Indexes for table `mahasiswa`
+-- Indeks untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`id_utama`);
 
 --
--- Indexes for table `pembimbing_lapangan`
+-- Indeks untuk tabel `pembimbing_lapangan`
 --
 ALTER TABLE `pembimbing_lapangan`
   ADD PRIMARY KEY (`id_utama`);
 
 --
--- Indexes for table `super_user`
+-- Indeks untuk tabel `super_user`
 --
 ALTER TABLE `super_user`
   ADD PRIMARY KEY (`id_utama`);
+
+--
+-- Indeks untuk tabel `waiting_list`
+--
+ALTER TABLE `waiting_list`
+  ADD PRIMARY KEY (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
