@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2021 at 03:53 PM
+-- Generation Time: Jan 17, 2021 at 02:29 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -33,7 +33,7 @@ CREATE TABLE `akun` (
   `entitas` int(1) NOT NULL,
   `password` char(200) DEFAULT NULL,
   `email` char(50) DEFAULT NULL,
-  `status` char(3) NOT NULL
+  `status` char(3) NOT NULL DEFAULT 'on'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -49,7 +49,8 @@ INSERT INTO `akun` (`id_utama`, `nama`, `entitas`, `password`, `email`, `status`
 (6, 'mhs2', 4, '1234', 'mhs2@email.com', 'on'),
 (7, 'mhs3', 4, '1234', 'mhs3@gmail.com', 'on'),
 (8, 'mhs4', 4, '1234', 'mhs4@email.com', 'on'),
-(9, 'mhs5', 4, '1234', 'mhs5@email.com', 'on');
+(9, 'mhs5', 4, '1234', 'mhs5@email.com', 'on'),
+(10, 'tetew', 3, '12345678', 'tetew@tetew.com', 'on');
 
 -- --------------------------------------------------------
 
@@ -87,7 +88,7 @@ CREATE TABLE `instansi` (
   `nofax` char(15) NOT NULL,
   `email` char(100) NOT NULL,
   `alamat` char(100) NOT NULL,
-  `status` char(3) NOT NULL
+  `status` char(3) NOT NULL DEFAULT 'on'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -149,7 +150,8 @@ CREATE TABLE `pembimbing_lapangan` (
 --
 
 INSERT INTO `pembimbing_lapangan` (`id`, `id_utama`, `email`, `nama`, `nowa`, `instansi`, `nip`) VALUES
-(1, 4, 'pemlap1@email.com', 'PemLap1', '12345678', '1', '');
+(1, 4, 'pemlap1@email.com', 'PemLap1', '12345678', '1', ''),
+(2, 10, 'tetew@tetew.com', 'tetew', '09282', '1', '');
 
 -- --------------------------------------------------------
 
@@ -177,7 +179,31 @@ CREATE TABLE `sign_up_akun` (
 
 INSERT INTO `sign_up_akun` (`id`, `nama`, `nrp`, `entitas`, `instansi`, `nowa`, `email`, `dosenpembimbing`, `pembimbinglapangan`, `status`, `password`) VALUES
 (1, 'Joko', '1234', 4, '2', '1234', 'joko@gmail.com', '3', '', 'on', '1234'),
-(2, 'Chriatian Alexander Pratama', '31119003', 4, '2', '082233574795', 'christian.alexander.pratama@gmail.com', '3', '', 'on', '082233574795');
+(2, 'Christian Alexander Pratama', '31119003', 4, '2', '082233574795', 'christian.alexander.pratama@gmail.com', '3', '', 'on', '082233574795'),
+(3, 'tetew', '', 3, '1', '09282', 'tetew@tetew.com', '', '', 'off', '12345678');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sign_up_instansi`
+--
+
+CREATE TABLE `sign_up_instansi` (
+  `id` int(11) NOT NULL,
+  `nama` char(100) NOT NULL,
+  `notelp` char(15) NOT NULL,
+  `nofax` char(15) NOT NULL,
+  `email` char(100) NOT NULL,
+  `alamat` char(100) NOT NULL,
+  `status` char(3) NOT NULL DEFAULT 'on'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sign_up_instansi`
+--
+
+INSERT INTO `sign_up_instansi` (`id`, `nama`, `notelp`, `nofax`, `email`, `alamat`, `status`) VALUES
+(1, 'ud. hore', '1234', '1234', 'gaada@email.com', 'jl. kartini 9', 'on');
 
 -- --------------------------------------------------------
 
@@ -232,12 +258,18 @@ ALTER TABLE `mahasiswa`
 -- Indexes for table `pembimbing_lapangan`
 --
 ALTER TABLE `pembimbing_lapangan`
-  ADD PRIMARY KEY (`id_utama`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sign_up_akun`
 --
 ALTER TABLE `sign_up_akun`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sign_up_instansi`
+--
+ALTER TABLE `sign_up_instansi`
   ADD PRIMARY KEY (`id`);
 
 --
