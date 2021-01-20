@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Jan 2021 pada 11.42
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.0
+-- Generation Time: Jan 20, 2021 at 07:45 AM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,10 +24,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `akun`
+-- Table structure for table `akun`
 --
 
 CREATE TABLE `akun` (
+  `timestamp` timestamp NULL DEFAULT current_timestamp(),
   `id_utama` int(11) NOT NULL,
   `nama` char(100) NOT NULL,
   `entitas` int(1) NOT NULL,
@@ -37,30 +38,27 @@ CREATE TABLE `akun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `akun`
+-- Dumping data for table `akun`
 --
 
-INSERT INTO `akun` (`id_utama`, `nama`, `entitas`, `password`, `email`, `status`) VALUES
-(1, 'Koordinator Magang', 1, '1234', 'su1', 'on'),
-(2, 'Administrator', 1, '1234', 'su2', 'on'),
-(3, 'Dosen1', 2, '1234', 'dosen1@email.com', 'on'),
-(4, 'PemLap1', 3, '1234', 'pemlap1@email.com', 'on'),
-(5, 'Mahasiswa1', 4, '1234', 'mahasiswa1@email.com', 'on'),
-(6, 'mhs2', 4, '1234', 'mhs2@email.com', 'on'),
-(7, 'mhs3', 4, '1234', 'mhs3@gmail.com', 'on'),
-(8, 'mhs4', 4, '1234', 'mhs4@email.com', 'on'),
-(9, 'mhs5', 4, '1234', 'mhs5@email.com', 'on'),
-(10, 'tetew', 3, '12345678', 'tetew@tetew.com', 'on'),
-(11, 'Joko', 4, '1234', 'joko@gmail.com', 'on'),
-(12, 'Dump', 3, '11111111', '@dump', 'off');
+INSERT INTO `akun` (`timestamp`, `id_utama`, `nama`, `entitas`, `password`, `email`, `status`) VALUES
+('2021-01-19 12:21:23', 1, 'Koordinator Magang', 1, '1234', 'su1', 'on'),
+('2021-01-19 12:21:23', 2, 'Administrator', 1, '1234', 'su2', 'on'),
+('2021-01-19 14:57:49', 3, 'Dosen1', 2, '12345678', 'dosen1@gmail.com', 'on'),
+('2021-01-19 15:04:30', 4, 'pemlap1', 3, '12345678', 'pemlap1@gmail.com', 'on'),
+('2021-01-19 15:04:36', 5, 'Mahasiswa 1', 4, '12345678', 'mhs1@gmail.com', 'on'),
+('2021-01-19 15:04:40', 6, 'mhs2', 4, '12345678', 'mhs2@gmail.com', 'on'),
+('2021-01-20 06:26:19', 7, 'mhs3', 4, '12345678', 'mhs3@gmail.com', 'on'),
+('2021-01-20 06:39:50', 8, 'dosen2', 2, '12345678', 'dosen2@gmail.com', 'on');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dosen_pembimbing`
+-- Table structure for table `dosen_pembimbing`
 --
 
 CREATE TABLE `dosen_pembimbing` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `id` int(11) NOT NULL,
   `id_utama` int(11) NOT NULL,
   `email` char(50) NOT NULL,
@@ -71,19 +69,21 @@ CREATE TABLE `dosen_pembimbing` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `dosen_pembimbing`
+-- Dumping data for table `dosen_pembimbing`
 --
 
-INSERT INTO `dosen_pembimbing` (`id`, `id_utama`, `email`, `nama`, `nidn`, `nowa`, `instansi`) VALUES
-(1, 3, 'dosen1@email.com', 'Dosen1', '12345678', '12345678', '2');
+INSERT INTO `dosen_pembimbing` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nidn`, `nowa`, `instansi`) VALUES
+('2021-01-19 14:57:49', 1, 3, 'dosen1@gmail.com', 'Dosen1', '12345678', '082233574795', '2'),
+('2021-01-20 06:39:50', 2, 8, 'dosen2@gmail.com', 'dosen2', '12345678', '12345678', '2');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `instansi`
+-- Table structure for table `instansi`
 --
 
 CREATE TABLE `instansi` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `id_instansi` char(10) NOT NULL,
   `nama` char(100) NOT NULL,
   `notelp` char(15) NOT NULL,
@@ -94,21 +94,22 @@ CREATE TABLE `instansi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `instansi`
+-- Dumping data for table `instansi`
 --
 
-INSERT INTO `instansi` (`id_instansi`, `nama`, `notelp`, `nofax`, `email`, `alamat`, `status`) VALUES
-('1', 'PT. Jaya', '03123456789', '03123456789', 'jaya@jaya.com', 'jalan buah', 'on'),
-('2', 'Universitas Widya Kartika', '03123456', '03123456', 'email@widyakartika.ac.id', 'Sutorejo Prima Utara II / 1', 'on'),
-('3', 'UD. Bangkit', '198198', '', 'bangkit@bangkit.com', 'jalan salak', 'on');
+INSERT INTO `instansi` (`timestamp`, `id_instansi`, `nama`, `notelp`, `nofax`, `email`, `alamat`, `status`) VALUES
+('2021-01-19 12:23:43', '1', 'PT. Jaya', '03123456789', '03123456789', 'jaya@jaya.com', 'jalan buah', 'on'),
+('2021-01-19 12:23:43', '2', 'Universitas Widya Kartika', '03123456', '03123456', 'email@widyakartika.ac.id', 'Sutorejo Prima Utara II / 1', 'on'),
+('2021-01-19 12:23:43', '3', 'UD. Bangkit', '198198', '', 'bangkit@bangkit.com', 'jalan salak', 'on');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mahasiswa`
+-- Table structure for table `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `id` int(11) NOT NULL,
   `id_utama` int(11) NOT NULL,
   `email` char(50) NOT NULL,
@@ -121,24 +122,44 @@ CREATE TABLE `mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `mahasiswa`
+-- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`id`, `id_utama`, `email`, `nama`, `nrp`, `nowa`, `dosenpembimbing`, `pembimbinglapangan`, `instansi`) VALUES
-(1, 5, 'mahasiswa1@email.com', 'Mahasiswa1', '12345678', '12345678', '3', '4', '1'),
-(2, 6, 'mhs2@email.com', 'mhs2', '1234', '1234', '3', '', '2'),
-(3, 7, 'mhs3@gmail.com', 'mhs3', '123', '1234', '3', '4', '1'),
-(4, 8, 'mhs4@email.com', 'mhs4', '123', '123', '3', '4', '1'),
-(5, 9, 'mhs5@email.com', 'mhs5', '1234', '1234', '3', '', '1'),
-(6, 11, 'joko@gmail.com', 'Joko', '1234', '1234', '3', '', '2');
+INSERT INTO `mahasiswa` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nrp`, `nowa`, `dosenpembimbing`, `pembimbinglapangan`, `instansi`) VALUES
+('2021-01-19 15:04:36', 1, 5, 'mhs1@gmail.com', 'Mahasiswa 1', '12345678', '12345678', '8', '', '2'),
+('2021-01-19 15:04:40', 2, 6, 'mhs2@gmail.com', 'mhs2', '12345678', '12345678', '3', '', '2'),
+('2021-01-20 06:26:19', 3, 7, 'mhs3@gmail.com', 'mhs3', '12345678', '12345678', '3', '4', '3');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembimbing_lapangan`
+-- Table structure for table `nama_status_magang`
+--
+
+CREATE TABLE `nama_status_magang` (
+  `id_status` int(11) NOT NULL,
+  `nama` char(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nama_status_magang`
+--
+
+INSERT INTO `nama_status_magang` (`id_status`, `nama`) VALUES
+(1, 'Menunggu Surat TU'),
+(2, 'Pengajuan Ke Instansi'),
+(3, 'Masa Magang'),
+(4, 'Laporan Magang'),
+(5, 'Selesai');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pembimbing_lapangan`
 --
 
 CREATE TABLE `pembimbing_lapangan` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `id` int(11) NOT NULL,
   `id_utama` int(11) NOT NULL,
   `email` char(50) NOT NULL,
@@ -149,21 +170,20 @@ CREATE TABLE `pembimbing_lapangan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pembimbing_lapangan`
+-- Dumping data for table `pembimbing_lapangan`
 --
 
-INSERT INTO `pembimbing_lapangan` (`id`, `id_utama`, `email`, `nama`, `nowa`, `instansi`, `nip`) VALUES
-(1, 4, 'pemlap1@email.com', 'PemLap1', '12345678', '1', ''),
-(2, 10, 'tetew@tetew.com', 'tetew', '09282', '1', ''),
-(3, 12, '@dump', 'Dump', '1', '1', '');
+INSERT INTO `pembimbing_lapangan` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nowa`, `instansi`, `nip`) VALUES
+('2021-01-19 15:04:30', 1, 4, 'pemlap1@gmail.com', 'pemlap1', '12345678', '1', '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sign_up_akun`
+-- Table structure for table `sign_up_akun`
 --
 
 CREATE TABLE `sign_up_akun` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `id` int(11) NOT NULL,
   `nama` char(100) NOT NULL,
   `nrp` char(15) NOT NULL,
@@ -178,23 +198,24 @@ CREATE TABLE `sign_up_akun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `sign_up_akun`
+-- Dumping data for table `sign_up_akun`
 --
 
-INSERT INTO `sign_up_akun` (`id`, `nama`, `nrp`, `entitas`, `instansi`, `nowa`, `email`, `dosenpembimbing`, `pembimbinglapangan`, `status`, `password`) VALUES
-(1, 'Joko', '1234', 4, '2', '1234', 'joko@gmail.com', '3', '', 'off', '1234'),
-(2, 'Christian Alexander Pratama', '31119003', 4, '2', '082233574795', 'christian.alexander.pratama@gmail.com', '3', '', 'on', '082233574795'),
-(3, 'tetew', '', 3, '1', '09282', 'tetew@tetew.com', '', '', 'off', '12345678'),
-(4, 'Christian Antonio Sadha', '', 3, '3', '082131835169', 'Ca.230401@gmail.com', '', '', 'on', 'Ca.230401'),
-(5, 'Dump', '', 3, '2', '1', '@dump', '', '', 'off', '11111111');
+INSERT INTO `sign_up_akun` (`timestamp`, `id`, `nama`, `nrp`, `entitas`, `instansi`, `nowa`, `email`, `dosenpembimbing`, `pembimbinglapangan`, `status`, `password`) VALUES
+('2021-01-19 15:02:18', 1, 'pemlap1', '', 3, '1', '12345678', 'pemlap1@gmail.com', '', '', 'off', '12345678'),
+('2021-01-19 15:03:15', 2, 'Mahasiswa 1', '12345678', 4, '2', '12345678', 'mhs1@gmail.com', '3', '', 'off', '12345678'),
+('2021-01-19 15:04:15', 3, 'mhs2', '12345678', 4, '2', '12345678', 'mhs2@gmail.com', '3', '', 'off', '12345678'),
+('2021-01-19 15:07:05', 4, 'mhs3', '12345678', 4, '3', '12345678', 'mhs3@gmail.com', '3', '4', 'off', '12345678'),
+('2021-01-20 06:16:10', 5, 'Joko', '12345678', 4, '1', '12345678', 'Joko@gmail.com', '3', '4', 'on', '12345678');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sign_up_instansi`
+-- Table structure for table `sign_up_instansi`
 --
 
 CREATE TABLE `sign_up_instansi` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `id` int(11) NOT NULL,
   `nama` char(100) NOT NULL,
   `notelp` char(15) NOT NULL,
@@ -205,19 +226,45 @@ CREATE TABLE `sign_up_instansi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `sign_up_instansi`
+-- Dumping data for table `sign_up_instansi`
 --
 
-INSERT INTO `sign_up_instansi` (`id`, `nama`, `notelp`, `nofax`, `email`, `alamat`, `status`) VALUES
-(1, 'ud. hore', '1234', '1234', 'gaada@email.com', 'jl. kartini 9', 'off');
+INSERT INTO `sign_up_instansi` (`timestamp`, `id`, `nama`, `notelp`, `nofax`, `email`, `alamat`, `status`) VALUES
+('2021-01-19 15:01:42', 1, 'UD. YEYYY', '12345678', 'jl. yeyyy', ' yey@yey.com', 'jl. yeyyy', 'on');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `super_user`
+-- Table structure for table `status_magang`
+--
+
+CREATE TABLE `status_magang` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `id_utama` int(11) NOT NULL,
+  `id_status` int(11) NOT NULL DEFAULT 1,
+  `time1` timestamp NOT NULL DEFAULT current_timestamp(),
+  `time2` timestamp NOT NULL DEFAULT current_timestamp(),
+  `time3` timestamp NOT NULL DEFAULT current_timestamp(),
+  `time4` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `status_magang`
+--
+
+INSERT INTO `status_magang` (`timestamp`, `id_utama`, `id_status`, `time1`, `time2`, `time3`, `time4`) VALUES
+('2021-01-20 03:38:34', 5, 3, '2021-01-20 03:35:11', '2021-01-20 03:38:20', '2021-01-20 03:35:11', '2021-01-20 03:35:11'),
+('2021-01-20 03:35:11', 6, 1, '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11'),
+('2021-01-20 06:26:19', 7, 1, '2021-01-20 06:26:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `super_user`
 --
 
 CREATE TABLE `super_user` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `id` int(11) NOT NULL,
   `id_utama` int(11) NOT NULL,
   `nama` char(100) NOT NULL,
@@ -225,61 +272,73 @@ CREATE TABLE `super_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `super_user`
+-- Dumping data for table `super_user`
 --
 
-INSERT INTO `super_user` (`id`, `id_utama`, `nama`, `email`) VALUES
-(1, 1, 'Koordinator Magang', 'su1'),
-(2, 2, 'Administrator', 'su2');
+INSERT INTO `super_user` (`timestamp`, `id`, `id_utama`, `nama`, `email`) VALUES
+('2021-01-19 12:26:30', 1, 1, 'Koordinator Magang', 'su1'),
+('2021-01-19 12:26:30', 2, 2, 'Administrator', 'su2');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `akun`
+-- Indexes for table `akun`
 --
 ALTER TABLE `akun`
   ADD PRIMARY KEY (`id_utama`);
 
 --
--- Indeks untuk tabel `dosen_pembimbing`
+-- Indexes for table `dosen_pembimbing`
 --
 ALTER TABLE `dosen_pembimbing`
   ADD PRIMARY KEY (`id_utama`);
 
 --
--- Indeks untuk tabel `instansi`
+-- Indexes for table `instansi`
 --
 ALTER TABLE `instansi`
   ADD PRIMARY KEY (`id_instansi`);
 
 --
--- Indeks untuk tabel `mahasiswa`
+-- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`id_utama`);
 
 --
--- Indeks untuk tabel `pembimbing_lapangan`
+-- Indexes for table `nama_status_magang`
+--
+ALTER TABLE `nama_status_magang`
+  ADD PRIMARY KEY (`id_status`);
+
+--
+-- Indexes for table `pembimbing_lapangan`
 --
 ALTER TABLE `pembimbing_lapangan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `sign_up_akun`
+-- Indexes for table `sign_up_akun`
 --
 ALTER TABLE `sign_up_akun`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `sign_up_instansi`
+-- Indexes for table `sign_up_instansi`
 --
 ALTER TABLE `sign_up_instansi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `super_user`
+-- Indexes for table `status_magang`
+--
+ALTER TABLE `status_magang`
+  ADD PRIMARY KEY (`id_utama`);
+
+--
+-- Indexes for table `super_user`
 --
 ALTER TABLE `super_user`
   ADD PRIMARY KEY (`id_utama`);
