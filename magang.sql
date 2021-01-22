@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2021 at 07:45 AM
+-- Generation Time: Jan 21, 2021 at 07:06 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -49,7 +49,8 @@ INSERT INTO `akun` (`timestamp`, `id_utama`, `nama`, `entitas`, `password`, `ema
 ('2021-01-19 15:04:36', 5, 'Mahasiswa 1', 4, '12345678', 'mhs1@gmail.com', 'on'),
 ('2021-01-19 15:04:40', 6, 'mhs2', 4, '12345678', 'mhs2@gmail.com', 'on'),
 ('2021-01-20 06:26:19', 7, 'mhs3', 4, '12345678', 'mhs3@gmail.com', 'on'),
-('2021-01-20 06:39:50', 8, 'dosen2', 2, '12345678', 'dosen2@gmail.com', 'on');
+('2021-01-20 06:39:50', 8, 'dosen2', 2, '12345678', 'dosen2@gmail.com', 'on'),
+('2021-01-21 10:19:44', 9, 'tayo', 4, '12345678', 'tayo@gmail.com', 'on');
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,7 @@ CREATE TABLE `dosen_pembimbing` (
 --
 
 INSERT INTO `dosen_pembimbing` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nidn`, `nowa`, `instansi`) VALUES
-('2021-01-19 14:57:49', 1, 3, 'dosen1@gmail.com', 'Dosen1', '12345678', '082233574795', '2'),
+('2021-01-19 14:57:49', 1, 3, 'dosen1@gmail.com', 'Dosen1', '123456789', '082233574795', '2'),
 ('2021-01-20 06:39:50', 2, 8, 'dosen2@gmail.com', 'dosen2', '12345678', '12345678', '2');
 
 -- --------------------------------------------------------
@@ -84,7 +85,7 @@ INSERT INTO `dosen_pembimbing` (`timestamp`, `id`, `id_utama`, `email`, `nama`, 
 
 CREATE TABLE `instansi` (
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `id_instansi` char(10) NOT NULL,
+  `id_instansi` int(11) NOT NULL,
   `nama` char(100) NOT NULL,
   `notelp` char(15) NOT NULL,
   `nofax` char(15) NOT NULL,
@@ -98,9 +99,9 @@ CREATE TABLE `instansi` (
 --
 
 INSERT INTO `instansi` (`timestamp`, `id_instansi`, `nama`, `notelp`, `nofax`, `email`, `alamat`, `status`) VALUES
-('2021-01-19 12:23:43', '1', 'PT. Jaya', '03123456789', '03123456789', 'jaya@jaya.com', 'jalan buah', 'on'),
-('2021-01-19 12:23:43', '2', 'Universitas Widya Kartika', '03123456', '03123456', 'email@widyakartika.ac.id', 'Sutorejo Prima Utara II / 1', 'on'),
-('2021-01-19 12:23:43', '3', 'UD. Bangkit', '198198', '', 'bangkit@bangkit.com', 'jalan salak', 'on');
+('2021-01-19 12:23:43', 1, 'PT. Jaya', '03123456789', '03123456789', 'jaya@jaya.com', 'jalan buah', 'on'),
+('2021-01-19 12:23:43', 2, 'Universitas Widya Kartika', '03123456', '03123456', 'email@widyakartika.ac.id', 'Sutorejo Prima Utara II / 1', 'on'),
+('2021-01-19 12:23:43', 3, 'UD. Bangkit', '198198', '', 'bangkit@bangkit.com', 'jalan salak', 'on');
 
 -- --------------------------------------------------------
 
@@ -118,17 +119,19 @@ CREATE TABLE `mahasiswa` (
   `nowa` char(15) NOT NULL,
   `dosenpembimbing` char(50) NOT NULL,
   `pembimbinglapangan` char(50) NOT NULL,
-  `instansi` char(10) NOT NULL
+  `instansi` char(10) NOT NULL,
+  `jam_magang` char(10) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nrp`, `nowa`, `dosenpembimbing`, `pembimbinglapangan`, `instansi`) VALUES
-('2021-01-19 15:04:36', 1, 5, 'mhs1@gmail.com', 'Mahasiswa 1', '12345678', '12345678', '8', '', '2'),
-('2021-01-19 15:04:40', 2, 6, 'mhs2@gmail.com', 'mhs2', '12345678', '12345678', '3', '', '2'),
-('2021-01-20 06:26:19', 3, 7, 'mhs3@gmail.com', 'mhs3', '12345678', '12345678', '3', '4', '3');
+INSERT INTO `mahasiswa` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nrp`, `nowa`, `dosenpembimbing`, `pembimbinglapangan`, `instansi`, `jam_magang`) VALUES
+('2021-01-19 15:04:36', 1, 5, 'mhs1@gmail.com', 'Mahasiswa 1', '12345678', '12345678', '3', '4', '3', '0'),
+('2021-01-19 15:04:40', 2, 6, 'mhs2@gmail.com', 'mhs2', '12345678', '12345678', '3', '', '2', '0'),
+('2021-01-20 06:26:19', 3, 7, 'mhs3@gmail.com', 'mhs3', '12345678', '12345678', '3', '4', '3', '0'),
+('2021-01-21 10:19:44', 7, 9, 'tayo@gmail.com', 'tayo', '12345', '12345', '3', '', '2', '0');
 
 -- --------------------------------------------------------
 
@@ -174,7 +177,7 @@ CREATE TABLE `pembimbing_lapangan` (
 --
 
 INSERT INTO `pembimbing_lapangan` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nowa`, `instansi`, `nip`) VALUES
-('2021-01-19 15:04:30', 1, 4, 'pemlap1@gmail.com', 'pemlap1', '12345678', '1', '');
+('2021-01-19 15:04:30', 1, 4, 'pemlap1@gmail.com', 'pemlap1', '12345678', '1', '8989');
 
 -- --------------------------------------------------------
 
@@ -206,7 +209,9 @@ INSERT INTO `sign_up_akun` (`timestamp`, `id`, `nama`, `nrp`, `entitas`, `instan
 ('2021-01-19 15:03:15', 2, 'Mahasiswa 1', '12345678', 4, '2', '12345678', 'mhs1@gmail.com', '3', '', 'off', '12345678'),
 ('2021-01-19 15:04:15', 3, 'mhs2', '12345678', 4, '2', '12345678', 'mhs2@gmail.com', '3', '', 'off', '12345678'),
 ('2021-01-19 15:07:05', 4, 'mhs3', '12345678', 4, '3', '12345678', 'mhs3@gmail.com', '3', '4', 'off', '12345678'),
-('2021-01-20 06:16:10', 5, 'Joko', '12345678', 4, '1', '12345678', 'Joko@gmail.com', '3', '4', 'on', '12345678');
+('2021-01-20 06:16:10', 5, 'Joko', '12345678', 4, '1', '12345678', 'Joko@gmail.com', '3', '4', 'on', '12345678'),
+('2021-01-21 03:51:47', 6, 'tono', '123', 3, '3', '12345678', 'tono@gmail.com', '', '', 'on', '12345678'),
+('2021-01-21 03:55:22', 7, 'hai', '12345678', 4, '2', '12345678', 'hai@gmail.com', '8', '', 'on', '12345678');
 
 -- --------------------------------------------------------
 
@@ -255,7 +260,8 @@ CREATE TABLE `status_magang` (
 INSERT INTO `status_magang` (`timestamp`, `id_utama`, `id_status`, `time1`, `time2`, `time3`, `time4`) VALUES
 ('2021-01-20 03:38:34', 5, 3, '2021-01-20 03:35:11', '2021-01-20 03:38:20', '2021-01-20 03:35:11', '2021-01-20 03:35:11'),
 ('2021-01-20 03:35:11', 6, 1, '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11'),
-('2021-01-20 06:26:19', 7, 1, '2021-01-20 06:26:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19');
+('2021-01-20 06:26:19', 7, 1, '2021-01-20 06:26:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19'),
+('2021-01-21 10:14:44', 9, 1, '2021-01-21 10:14:44', '2021-01-21 10:14:44', '2021-01-21 10:14:44', '2021-01-21 10:14:44');
 
 -- --------------------------------------------------------
 
@@ -279,6 +285,151 @@ INSERT INTO `super_user` (`timestamp`, `id`, `id_utama`, `nama`, `email`) VALUES
 ('2021-01-19 12:26:30', 1, 1, 'Koordinator Magang', 'su1'),
 ('2021-01-19 12:26:30', 2, 2, 'Administrator', 'su2');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `_data_absen_mhs5`
+--
+
+CREATE TABLE `_data_absen_mhs5` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_absen` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `jam_masuk` char(50) NOT NULL,
+  `jam_pulang` char(50) NOT NULL,
+  `uraian_kegiatan` text NOT NULL,
+  `status` char(20) NOT NULL DEFAULT 'Diajukan'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `_data_absen_mhs5`
+--
+
+INSERT INTO `_data_absen_mhs5` (`timestamp`, `id_absen`, `tanggal`, `jam_masuk`, `jam_pulang`, `uraian_kegiatan`, `status`) VALUES
+('2021-01-21 17:49:55', 1, '2021-01-22', '13:48', '14:00', 'saya sekarang sudah lima jam setengah mengerjakan asd menggarap tugas bagian upload download ternyata sangat susah dan akhirnya baru bisa 5.5 jam. Puji Tuhan sekarang saya bisa tidur.. sekarang suda jam 1 good night semuanya', 'Diajukan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `_data_absen_mhs6`
+--
+
+CREATE TABLE `_data_absen_mhs6` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_absen` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `jam_masuk` char(50) NOT NULL,
+  `jam_pulang` char(50) NOT NULL,
+  `uraian_kegiatan` text NOT NULL,
+  `status` char(20) NOT NULL DEFAULT 'Diajukan'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `_data_absen_mhs7`
+--
+
+CREATE TABLE `_data_absen_mhs7` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_absen` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `jam_masuk` char(50) NOT NULL,
+  `jam_pulang` char(50) NOT NULL,
+  `uraian_kegiatan` text NOT NULL,
+  `status` char(20) NOT NULL DEFAULT 'Diajukan'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `_data_absen_mhs9`
+--
+
+CREATE TABLE `_data_absen_mhs9` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_absen` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `jam_masuk` char(50) NOT NULL,
+  `jam_pulang` char(50) NOT NULL,
+  `uraian_kegiatan` text NOT NULL,
+  `status` char(20) NOT NULL DEFAULT 'Diajukan'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `_data_file_absen_mhs5`
+--
+
+CREATE TABLE `_data_file_absen_mhs5` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_file` int(11) NOT NULL,
+  `id_absen` int(11) NOT NULL,
+  `file` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `_data_file_absen_mhs5`
+--
+
+INSERT INTO `_data_file_absen_mhs5` (`timestamp`, `id_file`, `id_absen`, `file`) VALUES
+('2021-01-21 17:49:55', 1, 1, '1.jpg'),
+('2021-01-21 17:49:55', 2, 1, '2.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `_data_file_absen_mhs6`
+--
+
+CREATE TABLE `_data_file_absen_mhs6` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_file` int(11) NOT NULL,
+  `id_absen` int(11) NOT NULL,
+  `file` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `_data_file_absen_mhs7`
+--
+
+CREATE TABLE `_data_file_absen_mhs7` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_file` int(11) NOT NULL,
+  `id_absen` int(11) NOT NULL,
+  `file` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `_data_file_absen_mhs9`
+--
+
+CREATE TABLE `_data_file_absen_mhs9` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_file` int(11) NOT NULL,
+  `id_absen` int(11) NOT NULL,
+  `file` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `_data_file_temp`
+--
+
+CREATE TABLE `_data_file_temp` (
+  `id_temp` int(11) NOT NULL,
+  `id_utama` int(11) NOT NULL,
+  `id_absen` int(11) NOT NULL,
+  `id_laporan` int(11) NOT NULL,
+  `file` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -293,7 +444,7 @@ ALTER TABLE `akun`
 -- Indexes for table `dosen_pembimbing`
 --
 ALTER TABLE `dosen_pembimbing`
-  ADD PRIMARY KEY (`id_utama`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `instansi`
@@ -305,7 +456,7 @@ ALTER TABLE `instansi`
 -- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  ADD PRIMARY KEY (`id_utama`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `nama_status_magang`
@@ -342,6 +493,60 @@ ALTER TABLE `status_magang`
 --
 ALTER TABLE `super_user`
   ADD PRIMARY KEY (`id_utama`);
+
+--
+-- Indexes for table `_data_absen_mhs5`
+--
+ALTER TABLE `_data_absen_mhs5`
+  ADD PRIMARY KEY (`id_absen`);
+
+--
+-- Indexes for table `_data_absen_mhs6`
+--
+ALTER TABLE `_data_absen_mhs6`
+  ADD PRIMARY KEY (`id_absen`);
+
+--
+-- Indexes for table `_data_absen_mhs7`
+--
+ALTER TABLE `_data_absen_mhs7`
+  ADD PRIMARY KEY (`id_absen`);
+
+--
+-- Indexes for table `_data_absen_mhs9`
+--
+ALTER TABLE `_data_absen_mhs9`
+  ADD PRIMARY KEY (`id_absen`);
+
+--
+-- Indexes for table `_data_file_absen_mhs5`
+--
+ALTER TABLE `_data_file_absen_mhs5`
+  ADD PRIMARY KEY (`id_file`);
+
+--
+-- Indexes for table `_data_file_absen_mhs6`
+--
+ALTER TABLE `_data_file_absen_mhs6`
+  ADD PRIMARY KEY (`id_file`);
+
+--
+-- Indexes for table `_data_file_absen_mhs7`
+--
+ALTER TABLE `_data_file_absen_mhs7`
+  ADD PRIMARY KEY (`id_file`);
+
+--
+-- Indexes for table `_data_file_absen_mhs9`
+--
+ALTER TABLE `_data_file_absen_mhs9`
+  ADD PRIMARY KEY (`id_file`);
+
+--
+-- Indexes for table `_data_file_temp`
+--
+ALTER TABLE `_data_file_temp`
+  ADD PRIMARY KEY (`id_temp`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
