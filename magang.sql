@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2021 at 07:06 PM
+-- Generation Time: Jan 22, 2021 at 03:49 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -131,7 +131,7 @@ INSERT INTO `mahasiswa` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nrp`, 
 ('2021-01-19 15:04:36', 1, 5, 'mhs1@gmail.com', 'Mahasiswa 1', '12345678', '12345678', '3', '4', '3', '0'),
 ('2021-01-19 15:04:40', 2, 6, 'mhs2@gmail.com', 'mhs2', '12345678', '12345678', '3', '', '2', '0'),
 ('2021-01-20 06:26:19', 3, 7, 'mhs3@gmail.com', 'mhs3', '12345678', '12345678', '3', '4', '3', '0'),
-('2021-01-21 10:19:44', 7, 9, 'tayo@gmail.com', 'tayo', '12345', '12345', '3', '', '2', '0');
+('2021-01-21 10:19:44', 4, 9, 'tayo@gmail.com', 'tayo', '12345', '12345', '3', '', '2', '0');
 
 -- --------------------------------------------------------
 
@@ -301,13 +301,6 @@ CREATE TABLE `_data_absen_mhs5` (
   `status` char(20) NOT NULL DEFAULT 'Diajukan'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `_data_absen_mhs5`
---
-
-INSERT INTO `_data_absen_mhs5` (`timestamp`, `id_absen`, `tanggal`, `jam_masuk`, `jam_pulang`, `uraian_kegiatan`, `status`) VALUES
-('2021-01-21 17:49:55', 1, '2021-01-22', '13:48', '14:00', 'saya sekarang sudah lima jam setengah mengerjakan asd menggarap tugas bagian upload download ternyata sangat susah dan akhirnya baru bisa 5.5 jam. Puji Tuhan sekarang saya bisa tidur.. sekarang suda jam 1 good night semuanya', 'Diajukan');
-
 -- --------------------------------------------------------
 
 --
@@ -369,14 +362,6 @@ CREATE TABLE `_data_file_absen_mhs5` (
   `file` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `_data_file_absen_mhs5`
---
-
-INSERT INTO `_data_file_absen_mhs5` (`timestamp`, `id_file`, `id_absen`, `file`) VALUES
-('2021-01-21 17:49:55', 1, 1, '1.jpg'),
-('2021-01-21 17:49:55', 2, 1, '2.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -413,20 +398,6 @@ CREATE TABLE `_data_file_absen_mhs9` (
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `id_file` int(11) NOT NULL,
   `id_absen` int(11) NOT NULL,
-  `file` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `_data_file_temp`
---
-
-CREATE TABLE `_data_file_temp` (
-  `id_temp` int(11) NOT NULL,
-  `id_utama` int(11) NOT NULL,
-  `id_absen` int(11) NOT NULL,
-  `id_laporan` int(11) NOT NULL,
   `file` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -541,12 +512,6 @@ ALTER TABLE `_data_file_absen_mhs7`
 --
 ALTER TABLE `_data_file_absen_mhs9`
   ADD PRIMARY KEY (`id_file`);
-
---
--- Indexes for table `_data_file_temp`
---
-ALTER TABLE `_data_file_temp`
-  ADD PRIMARY KEY (`id_temp`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
