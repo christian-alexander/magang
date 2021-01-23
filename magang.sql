@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2021 at 03:49 AM
+-- Generation Time: Jan 23, 2021 at 03:20 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -46,7 +46,7 @@ INSERT INTO `akun` (`timestamp`, `id_utama`, `nama`, `entitas`, `password`, `ema
 ('2021-01-19 12:21:23', 2, 'Administrator', 1, '1234', 'su2', 'on'),
 ('2021-01-19 14:57:49', 3, 'Dosen1', 2, '12345678', 'dosen1@gmail.com', 'on'),
 ('2021-01-19 15:04:30', 4, 'pemlap1', 3, '12345678', 'pemlap1@gmail.com', 'on'),
-('2021-01-19 15:04:36', 5, 'Mahasiswa 1', 4, '12345678', 'mhs1@gmail.com', 'on'),
+('2021-01-19 15:04:36', 5, 'Mahasiswa 1', 4, '12345678', 'mhs1@gmail.com', 'off'),
 ('2021-01-19 15:04:40', 6, 'mhs2', 4, '12345678', 'mhs2@gmail.com', 'on'),
 ('2021-01-20 06:26:19', 7, 'mhs3', 4, '12345678', 'mhs3@gmail.com', 'on'),
 ('2021-01-20 06:39:50', 8, 'dosen2', 2, '12345678', 'dosen2@gmail.com', 'on'),
@@ -128,8 +128,8 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nrp`, `nowa`, `dosenpembimbing`, `pembimbinglapangan`, `instansi`, `jam_magang`) VALUES
-('2021-01-19 15:04:36', 1, 5, 'mhs1@gmail.com', 'Mahasiswa 1', '12345678', '12345678', '3', '4', '3', '0'),
-('2021-01-19 15:04:40', 2, 6, 'mhs2@gmail.com', 'mhs2', '12345678', '12345678', '3', '', '2', '0'),
+('2021-01-19 15:04:36', 1, 5, 'mhs1@gmail.com', 'Mahasiswa 1', '12345678', '12345678', '3', '4', '3', '1450000'),
+('2021-01-19 15:04:40', 2, 6, 'mhs2@gmail.com', 'mhs2', '12345678', '12345678', '3', '4', '1', '0'),
 ('2021-01-20 06:26:19', 3, 7, 'mhs3@gmail.com', 'mhs3', '12345678', '12345678', '3', '4', '3', '0'),
 ('2021-01-21 10:19:44', 4, 9, 'tayo@gmail.com', 'tayo', '12345', '12345', '3', '', '2', '0');
 
@@ -258,8 +258,8 @@ CREATE TABLE `status_magang` (
 --
 
 INSERT INTO `status_magang` (`timestamp`, `id_utama`, `id_status`, `time1`, `time2`, `time3`, `time4`) VALUES
-('2021-01-20 03:38:34', 5, 3, '2021-01-20 03:35:11', '2021-01-20 03:38:20', '2021-01-20 03:35:11', '2021-01-20 03:35:11'),
-('2021-01-20 03:35:11', 6, 1, '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11'),
+('2021-01-23 02:18:45', 5, 5, '2021-01-20 03:35:11', '2021-01-20 03:38:20', '2021-01-23 00:57:59', '2021-01-23 02:08:09'),
+('2021-01-23 02:18:55', 6, 3, '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11'),
 ('2021-01-20 06:26:19', 7, 1, '2021-01-20 06:26:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19'),
 ('2021-01-21 10:14:44', 9, 1, '2021-01-21 10:14:44', '2021-01-21 10:14:44', '2021-01-21 10:14:44', '2021-01-21 10:14:44');
 
@@ -300,6 +300,13 @@ CREATE TABLE `_data_absen_mhs5` (
   `uraian_kegiatan` text NOT NULL,
   `status` char(20) NOT NULL DEFAULT 'Diajukan'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `_data_absen_mhs5`
+--
+
+INSERT INTO `_data_absen_mhs5` (`timestamp`, `id_absen`, `tanggal`, `jam_masuk`, `jam_pulang`, `uraian_kegiatan`, `status`) VALUES
+('2021-01-22 15:29:55', 1, '2021-01-22', '08:00', '16:00', 'saya ga ngapa2in', 'Disetujui');
 
 -- --------------------------------------------------------
 
@@ -361,6 +368,13 @@ CREATE TABLE `_data_file_absen_mhs5` (
   `id_absen` int(11) NOT NULL,
   `file` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `_data_file_absen_mhs5`
+--
+
+INSERT INTO `_data_file_absen_mhs5` (`timestamp`, `id_file`, `id_absen`, `file`) VALUES
+('2021-01-22 15:29:55', 1, 1, 'fer-nando-UMC5sfWci78-unsplash.jpg');
 
 -- --------------------------------------------------------
 
