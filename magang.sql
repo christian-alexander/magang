@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2021 at 10:06 AM
+-- Generation Time: Jan 24, 2021 at 03:11 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -75,7 +75,7 @@ CREATE TABLE `data_laporan` (
 --
 
 INSERT INTO `data_laporan` (`timestamp`, `id_laporan`, `id_utama`, `judul_laporan`, `nilai_dosbing`, `nilai_pemlap`, `komentar_dosbing`, `komentar_pemlap`) VALUES
-('2021-01-24 06:59:23', 1, 5, 'heheheh', 0, 0, '', '');
+('2021-01-24 06:59:23', 1, 5, 'heheheh', 83, 96, 'yaaa cukuppp', 'good');
 
 -- --------------------------------------------------------
 
