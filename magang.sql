@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2021 at 11:42 AM
+-- Generation Time: Jan 24, 2021 at 10:06 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -46,15 +46,36 @@ INSERT INTO `akun` (`timestamp`, `id_utama`, `nama`, `entitas`, `password`, `ema
 ('2021-01-19 12:21:23', 2, 'Administrator', 1, '1234', 'su2', 'on'),
 ('2021-01-19 14:57:49', 3, 'Dosen1', 2, '12345678', 'dosen1@gmail.com', 'on'),
 ('2021-01-19 15:04:30', 4, 'pemlap1', 3, '12345678', 'pemlap1@gmail.com', 'on'),
-('2021-01-19 15:04:36', 5, 'Mahasiswa 1', 4, '12345678', 'mhs1@gmail.com', 'off'),
+('2021-01-19 15:04:36', 5, 'Mahasiswa 1', 4, '12345678', 'mhs1@gmail.com', 'on'),
 ('2021-01-19 15:04:40', 6, 'mhs2', 4, '12345678', 'mhs2@gmail.com', 'on'),
 ('2021-01-20 06:26:19', 7, 'mhs3', 4, '12345678', 'mhs3@gmail.com', 'on'),
 ('2021-01-20 06:39:50', 8, 'dosen2', 2, '12345678', 'dosen2@gmail.com', 'on'),
 ('2021-01-21 10:19:44', 9, 'tayo', 4, '12345678', 'tayo@gmail.com', 'on'),
-('2021-01-23 09:15:10', 10, 'hehehehheh', 3, '12345678', '@', 'on'),
-('2021-01-23 09:16:27', 11, 'hohohoho', 3, '12345678', '@', 'on'),
-('2021-01-23 09:17:30', 12, 'heheuhuh', 3, '12345678', '@', 'on'),
-('2021-01-23 09:17:57', 13, 'zozo', 3, '12345678', '@', 'on');
+('2021-01-23 14:33:32', 10, 'pemlap2', 3, '12345678', 'pemlap2@gmail.com', 'on');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_laporan`
+--
+
+CREATE TABLE `data_laporan` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_laporan` int(11) NOT NULL,
+  `id_utama` int(11) NOT NULL,
+  `judul_laporan` varchar(200) NOT NULL,
+  `nilai_dosbing` int(11) NOT NULL,
+  `nilai_pemlap` int(11) NOT NULL,
+  `komentar_dosbing` varchar(1000) NOT NULL,
+  `komentar_pemlap` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `data_laporan`
+--
+
+INSERT INTO `data_laporan` (`timestamp`, `id_laporan`, `id_utama`, `judul_laporan`, `nilai_dosbing`, `nilai_pemlap`, `komentar_dosbing`, `komentar_pemlap`) VALUES
+('2021-01-24 06:59:23', 1, 5, 'heheheh', 0, 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -80,6 +101,36 @@ CREATE TABLE `dosen_pembimbing` (
 INSERT INTO `dosen_pembimbing` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nidn`, `nowa`, `instansi`) VALUES
 ('2021-01-19 14:57:49', 1, 3, 'dosen1@gmail.com', 'Dosen1', '123456789', '082233574795', '2'),
 ('2021-01-20 06:39:50', 2, 8, 'dosen2@gmail.com', 'dosen2', '12345678', '12345678', '2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `file_laporan`
+--
+
+CREATE TABLE `file_laporan` (
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id_file` int(11) NOT NULL,
+  `id_utama` int(11) NOT NULL,
+  `jenis_laporan` varchar(10) NOT NULL,
+  `file` varchar(1000) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'on'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `file_laporan`
+--
+
+INSERT INTO `file_laporan` (`timestamp`, `id_file`, `id_utama`, `jenis_laporan`, `file`, `status`) VALUES
+('2021-01-24 07:38:50', 1, 5, '1', 'absen.php', 'off'),
+('2021-01-24 07:38:50', 2, 5, '1', 'absen_baru.php', 'off'),
+('2021-01-24 07:38:50', 3, 5, '2', 'akun.php', 'off'),
+('2021-01-24 07:38:50', 4, 5, '2', 'detail_absen.php', 'off'),
+('2021-01-24 07:38:50', 5, 5, '3', 'detail_absen.php', 'off'),
+('2021-01-24 07:38:50', 6, 5, '3', 'edit_account.php', 'off'),
+('2021-01-24 08:01:47', 7, 5, '1', 'absen_baru.php', 'on'),
+('2021-01-24 08:01:47', 8, 5, '2', 'akun.php', 'on'),
+('2021-01-24 08:01:47', 9, 5, '3', 'lihat_laporan.php', 'on');
 
 -- --------------------------------------------------------
 
@@ -182,10 +233,7 @@ CREATE TABLE `pembimbing_lapangan` (
 
 INSERT INTO `pembimbing_lapangan` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nowa`, `instansi`, `nip`) VALUES
 ('2021-01-19 15:04:30', 1, 4, 'pemlap1@gmail.com', 'pemlap1', '12345678', '1', '8989'),
-('2021-01-23 09:15:10', 2, 10, '@', 'hehehehheh', '12', '1', ''),
-('2021-01-23 09:16:27', 3, 11, '@', 'hohohoho', '11', '1', ''),
-('2021-01-23 09:17:30', 4, 12, '@', 'heheuhuh', '2', '1', ''),
-('2021-01-23 09:17:57', 5, 13, '@', 'zozo', '12', '1', '');
+('2021-01-23 14:33:32', 2, 10, 'pemlap2@gmail.com', 'pemlap2', '1234', '3', '');
 
 -- --------------------------------------------------------
 
@@ -266,10 +314,10 @@ CREATE TABLE `status_magang` (
 --
 
 INSERT INTO `status_magang` (`timestamp`, `id_utama`, `id_status`, `time1`, `time2`, `time3`, `time4`) VALUES
-('2021-01-23 02:18:45', 5, 5, '2021-01-20 03:35:11', '2021-01-20 03:38:20', '2021-01-23 00:57:59', '2021-01-23 02:08:09'),
-('2021-01-23 02:18:55', 6, 3, '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11'),
-('2021-01-23 10:01:19', 7, 1, '2020-03-20 06:26:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19'),
-('2021-01-23 10:01:39', 9, 1, '2020-01-29 10:14:44', '2021-01-21 10:14:44', '2021-01-21 10:14:44', '2021-01-21 10:14:44');
+('2021-01-24 06:13:16', 5, 4, '2021-01-20 03:35:11', '2021-01-20 03:38:20', '2021-01-23 11:15:04', '2021-01-23 02:08:09'),
+('2021-01-23 11:15:08', 6, 1, '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11'),
+('2021-01-23 11:14:38', 7, 1, '2021-01-23 10:01:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19'),
+('2021-01-23 11:14:56', 9, 1, '2021-01-23 10:01:39', '2021-01-21 10:14:44', '2021-01-21 10:14:44', '2021-01-21 10:14:44');
 
 -- --------------------------------------------------------
 
@@ -434,10 +482,22 @@ ALTER TABLE `akun`
   ADD PRIMARY KEY (`id_utama`);
 
 --
+-- Indexes for table `data_laporan`
+--
+ALTER TABLE `data_laporan`
+  ADD PRIMARY KEY (`id_laporan`);
+
+--
 -- Indexes for table `dosen_pembimbing`
 --
 ALTER TABLE `dosen_pembimbing`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `file_laporan`
+--
+ALTER TABLE `file_laporan`
+  ADD PRIMARY KEY (`id_file`);
 
 --
 -- Indexes for table `instansi`
