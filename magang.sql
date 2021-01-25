@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2021 at 03:11 PM
+-- Generation Time: Jan 25, 2021 at 10:11 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -75,7 +75,7 @@ CREATE TABLE `data_laporan` (
 --
 
 INSERT INTO `data_laporan` (`timestamp`, `id_laporan`, `id_utama`, `judul_laporan`, `nilai_dosbing`, `nilai_pemlap`, `komentar_dosbing`, `komentar_pemlap`) VALUES
-('2021-01-24 06:59:23', 1, 5, 'heheheh', 83, 96, 'yaaa cukuppp', 'good');
+('2021-01-25 04:19:22', 1, 5, 'jsjsjs', 0, 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -122,15 +122,9 @@ CREATE TABLE `file_laporan` (
 --
 
 INSERT INTO `file_laporan` (`timestamp`, `id_file`, `id_utama`, `jenis_laporan`, `file`, `status`) VALUES
-('2021-01-24 07:38:50', 1, 5, '1', 'absen.php', 'off'),
-('2021-01-24 07:38:50', 2, 5, '1', 'absen_baru.php', 'off'),
-('2021-01-24 07:38:50', 3, 5, '2', 'akun.php', 'off'),
-('2021-01-24 07:38:50', 4, 5, '2', 'detail_absen.php', 'off'),
-('2021-01-24 07:38:50', 5, 5, '3', 'detail_absen.php', 'off'),
-('2021-01-24 07:38:50', 6, 5, '3', 'edit_account.php', 'off'),
-('2021-01-24 08:01:47', 7, 5, '1', 'absen_baru.php', 'on'),
-('2021-01-24 08:01:47', 8, 5, '2', 'akun.php', 'on'),
-('2021-01-24 08:01:47', 9, 5, '3', 'lihat_laporan.php', 'on');
+('2021-01-25 08:26:34', 1, 5, '1', 'akun.php', 'on'),
+('2021-01-25 08:26:34', 2, 5, '2', 'home.php', 'on'),
+('2021-01-25 08:26:34', 3, 5, '3', 'instansi.php', 'on');
 
 -- --------------------------------------------------------
 
@@ -362,7 +356,7 @@ CREATE TABLE `_data_absen_mhs5` (
 --
 
 INSERT INTO `_data_absen_mhs5` (`timestamp`, `id_absen`, `tanggal`, `jam_masuk`, `jam_pulang`, `uraian_kegiatan`, `status`) VALUES
-('2021-01-22 15:29:55', 1, '2021-01-22', '08:00', '16:00', 'saya ga ngapa2in', 'Disetujui');
+('2021-01-25 08:24:26', 5, '2021-01-25', '15:30', '21:30', 'tetew', 'Diajukan');
 
 -- --------------------------------------------------------
 
@@ -430,7 +424,7 @@ CREATE TABLE `_data_file_absen_mhs5` (
 --
 
 INSERT INTO `_data_file_absen_mhs5` (`timestamp`, `id_file`, `id_absen`, `file`) VALUES
-('2021-01-22 15:29:55', 1, 1, 'fer-nando-UMC5sfWci78-unsplash.jpg');
+('2021-01-25 08:24:26', 3, 5, 'nav_detil_mahasiswa.php');
 
 -- --------------------------------------------------------
 
