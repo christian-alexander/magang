@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2021 at 10:11 AM
+-- Generation Time: Jan 26, 2021 at 03:12 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -75,7 +75,7 @@ CREATE TABLE `data_laporan` (
 --
 
 INSERT INTO `data_laporan` (`timestamp`, `id_laporan`, `id_utama`, `judul_laporan`, `nilai_dosbing`, `nilai_pemlap`, `komentar_dosbing`, `komentar_pemlap`) VALUES
-('2021-01-25 04:19:22', 1, 5, 'jsjsjs', 0, 0, '', '');
+('2021-01-25 15:04:59', 1, 5, 'ini judu;', 0, 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -99,8 +99,8 @@ CREATE TABLE `dosen_pembimbing` (
 --
 
 INSERT INTO `dosen_pembimbing` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nidn`, `nowa`, `instansi`) VALUES
-('2021-01-19 14:57:49', 1, 3, 'dosen1@gmail.com', 'Dosen1', '123456789', '082233574795', '2'),
-('2021-01-20 06:39:50', 2, 8, 'dosen2@gmail.com', 'dosen2', '12345678', '12345678', '2');
+('2021-01-19 14:57:49', 1, 3, 'dosen1@gmail.com', 'Dosen1', '123456789', '082233574795', '1'),
+('2021-01-20 06:39:50', 2, 8, 'dosen2@gmail.com', 'dosen2', '12345678', '12345678', '1');
 
 -- --------------------------------------------------------
 
@@ -116,15 +116,6 @@ CREATE TABLE `file_laporan` (
   `file` varchar(1000) NOT NULL,
   `status` varchar(20) NOT NULL DEFAULT 'on'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `file_laporan`
---
-
-INSERT INTO `file_laporan` (`timestamp`, `id_file`, `id_utama`, `jenis_laporan`, `file`, `status`) VALUES
-('2021-01-25 08:26:34', 1, 5, '1', 'akun.php', 'on'),
-('2021-01-25 08:26:34', 2, 5, '2', 'home.php', 'on'),
-('2021-01-25 08:26:34', 3, 5, '3', 'instansi.php', 'on');
 
 -- --------------------------------------------------------
 
@@ -148,8 +139,8 @@ CREATE TABLE `instansi` (
 --
 
 INSERT INTO `instansi` (`timestamp`, `id_instansi`, `nama`, `notelp`, `nofax`, `email`, `alamat`, `status`) VALUES
-('2021-01-19 12:23:43', 1, 'PT. Jaya', '03123456789', '03123456789', 'jaya@jaya.com', 'jalan buah', 'on'),
-('2021-01-19 12:23:43', 2, 'Universitas Widya Kartika', '03123456', '03123456', 'email@widyakartika.ac.id', 'Sutorejo Prima Utara II / 1', 'on'),
+('2021-01-19 12:23:43', 1, 'Universitas Widya Kartika', '03123456', '03123456', 'email@widyakartika.ac.id', 'Sutorejo Prima Utara II / 1', 'on'),
+('2021-01-19 12:23:43', 2, 'PT. Jaya', '03123456789', '03123456789', 'jaya@jaya.com', 'jalan buah', 'on'),
 ('2021-01-19 12:23:43', 3, 'UD. Bangkit', '198198', '', 'bangkit@bangkit.com', 'jalan salak', 'on');
 
 -- --------------------------------------------------------
@@ -178,9 +169,9 @@ CREATE TABLE `mahasiswa` (
 
 INSERT INTO `mahasiswa` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nrp`, `nowa`, `dosenpembimbing`, `pembimbinglapangan`, `instansi`, `jam_magang`) VALUES
 ('2021-01-19 15:04:36', 1, 5, 'mhs1@gmail.com', 'Mahasiswa 1', '12345678', '12345678', '3', '4', '3', '720000'),
-('2021-01-19 15:04:40', 2, 6, 'mhs2@gmail.com', 'mhs2', '12345678', '12345678', '3', '4', '1', '0'),
+('2021-01-19 15:04:40', 2, 6, 'mhs2@gmail.com', 'mhs2', '12345678', '12345678', '3', '4', '2', '0'),
 ('2021-01-20 06:26:19', 3, 7, 'mhs3@gmail.com', 'mhs3', '12345678', '12345678', '3', '4', '3', '0'),
-('2021-01-21 10:19:44', 4, 9, 'tayo@gmail.com', 'tayo', '12345', '12345', '3', '', '2', '0');
+('2021-01-21 10:19:44', 4, 9, 'tayo@gmail.com', 'tayo', '12345', '12345', '3', '', '1', '0');
 
 -- --------------------------------------------------------
 
@@ -226,7 +217,7 @@ CREATE TABLE `pembimbing_lapangan` (
 --
 
 INSERT INTO `pembimbing_lapangan` (`timestamp`, `id`, `id_utama`, `email`, `nama`, `nowa`, `instansi`, `nip`) VALUES
-('2021-01-19 15:04:30', 1, 4, 'pemlap1@gmail.com', 'pemlap1', '12345678', '1', '8989'),
+('2021-01-19 15:04:30', 1, 4, 'pemlap1@gmail.com', 'pemlap1', '12345678', '2', '8989'),
 ('2021-01-23 14:33:32', 2, 10, 'pemlap2@gmail.com', 'pemlap2', '1234', '3', '');
 
 -- --------------------------------------------------------
@@ -311,7 +302,7 @@ INSERT INTO `status_magang` (`timestamp`, `id_utama`, `id_status`, `time1`, `tim
 ('2021-01-24 06:13:16', 5, 4, '2021-01-20 03:35:11', '2021-01-20 03:38:20', '2021-01-23 11:15:04', '2021-01-23 02:08:09'),
 ('2021-01-23 11:15:08', 6, 1, '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11', '2021-01-20 03:35:11'),
 ('2021-01-23 11:14:38', 7, 1, '2021-01-23 10:01:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19', '2021-01-20 06:26:19'),
-('2021-01-23 11:14:56', 9, 1, '2021-01-23 10:01:39', '2021-01-21 10:14:44', '2021-01-21 10:14:44', '2021-01-21 10:14:44');
+('2021-01-26 01:20:27', 9, 3, '2021-01-23 10:01:39', '2021-01-21 10:14:44', '2021-01-21 10:14:44', '2021-01-21 10:14:44');
 
 -- --------------------------------------------------------
 
